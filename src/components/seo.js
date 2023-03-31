@@ -1,22 +1,15 @@
 import * as React from 'react';
-import { graphql, useStaticQuery } from 'gatsby';
+
 import favicon from '../images/icon.png';
+import useSiteMetadata from '../services/useSiteMetadata';
 
 const Seo = ({ title }) => {
-    const data = useStaticQuery(graphql`
-        query {
-            site {
-                siteMetadata {
-                    title
-                }
-            }
-        }
-    `);
+    const metadata = useSiteMetadata();
 
     return (
         <>
             <title>
-                {title} | {data.site.siteMetadata.title}
+                {title} | {metadata.title}
             </title>
             <link rel="icon" type="image/x-icon" href={favicon} />
         </>
